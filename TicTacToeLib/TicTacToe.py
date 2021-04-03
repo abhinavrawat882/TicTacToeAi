@@ -117,7 +117,62 @@ class TicTacToe:
         return(self.board[x][y])
 
     def whoWon(self):
-        ##tells if any one won or not
+        ## tells if any one won or not
+        ## to check if someone won 
+        
+
+        ##RETURN POLICY
+        ##X won returns 1
+        ##O won returns 0
+        ## DRAW return -1
+        ## ELSE return 2
+
+        ##keep track if every possible move is not winnable its draw
+        drawBlocks=0
+
+
+        ##now first check the rows
+        for i in self.row:
+            if(i[0]==-1):
+                drawBlocks+=1
+            else if(i[0]!=2):
+                if(i[0]==1 and i[1]==3):
+                    return(1)
+                elif(i[0]==0 and i[1]==3):
+                    return(0)
+        
+        ##Check the columnss
+        for i in self.column:
+            if(i[0]==-1):
+                drawBlocks+=1
+            else if(i[0]!=2):
+                if(i[0]==1 and i[1]==3):
+                    return(1)
+                elif(i[0]==0 and i[1]==3):
+                    return(0)
+        #check the right diagonal
+        if(self.rd[0]==-1):
+            drawBlocks+=1
+        elif(self.rd[0]!=2):
+            if(self.rd[0]==1 and self.rd==3 ):
+                return(1)
+            if(self.rd[0]==0 and self.rd==3 ):
+                return(0)
+        
+        #Check left diagonal
+        if(self.ld[0]==-1):
+            drawBlocks+=1
+        elif(self.ld[0]!=2):
+            if(self.ld[0]==1 and self.ld==3 ):
+                return(1)
+            if(self.ld[0]==0 and self.ld==3 ):
+                return(0)
+
+        if(drawBlocks==8):
+            return(-1)
+        else:
+            return(2)
+
 
 
 
